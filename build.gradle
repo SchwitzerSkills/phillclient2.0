@@ -1,0 +1,39 @@
+plugins {
+    id 'fabric-loom' version '1.10.1'
+}
+
+group = "at.phillip"
+version = "1.0.0"
+
+repositories {
+    mavenCentral()
+    maven { url = "https://maven.fabricmc.net/" }
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:1.21.8"
+    mappings "net.fabricmc:yarn:1.21.8+build.1:v2"
+
+    modImplementation "net.fabricmc:fabric-loader:0.16.13"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:0.132.0+1.21.8"
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+jar {
+    archiveBaseName.set("phillclient")
+    archiveVersion.set("1.0.0")
+    archiveClassifier.set("")
+}
+
+tasks.register("copyToModrinth", Copy) {
+    dependsOn build
+    from("$buildDir/libs/phillclient-1.0.0.jar")
+    into("C:/Users/Phillip PC/AppData/Roaming/ModrinthApp/profiles/phillclient/mods")
+}
+
+build.finalizedBy("copyToModrinth")

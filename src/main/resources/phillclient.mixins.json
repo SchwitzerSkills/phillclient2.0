@@ -1,0 +1,11 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "at.phillip.client.mixins",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "EntityGlowMixin",
+    "TabNameSanitizerMixin",
+  ],
+  "injectors": { "defaultRequire": 1 }
+}
